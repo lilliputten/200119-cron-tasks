@@ -1,9 +1,24 @@
 #!/bin/sh
 # @desc Remote utils configuration
-# @changed 2019.11.27, 16:43
+# @changed 2020.01.19, 22:25
 
-export PROJECT_NAME="cron-tasks"
-# export PROJECT_NAME=`basename "${PWD}"`
+# Essential project params...
+
+export PROJECT_NAME="cron-tasks" # Project (and folder) name
+# export PROJECT_NAME=`basename "${PWD}"` # Example: get project name from current folder
+
+export REMOTE_TARGET_PATH="/home/pi/${PROJECT_NAME}" # Destination folder
+
+export ROOTFILES="
+  README.md \
+  build-tag.txt \
+  package*.json \
+  index.js \
+  config.js \
+  install-node-modules.sh \
+"
+
+# Common params...
 
 export DATE=`date "+%Y.%m.%d %H:%M:%S"`
 export DATETAG=`date "+%y%m%d-%H%M"`
@@ -26,15 +41,6 @@ export PLINK_CMD="plink -C -P $TerminalServerPort -l $TerminalServerUser -pw $Te
 export CP_CMD="pscp -scp -r -C -P $TerminalServerPort -l $TerminalServerUser -pw $TerminalServerPw"
 
 export ARC_CMD="tar czf"
-
-export ROOTFILES="
-  README.md \
-  build-tag.txt \
-  package*.json \
-  index.js \
-"
-
-export REMOTE_TARGET_PATH="/home/pi/test-cron" # Destination folder
 
 export BUILD_TAG=`cat "./build-tag.txt"`
 if [ -z "$BUILD_TAG" ]; then

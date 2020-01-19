@@ -5,6 +5,12 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
+    "prettyjson": "^1.2.1"
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
@@ -14,11 +20,5 @@
   "scripts": {
     "eslint": "echo --JS source code linting-- && eslint . --ext .js && echo No JS problems found",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "chalk": "^3.0.0",
-    "command-line-args": "^5.1.1",
-    "command-line-usage": "^6.1.0",
-    "prettyjson": "^1.2.1"
   }
 }
