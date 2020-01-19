@@ -1,0 +1,108 @@
+# https://eslint.org/docs/rules/
+# https://eslint.org/docs/user-guide/configuring#specifying-environments
+# Using:
+#  - babel-eslint
+#  - eslint-plugin-babel
+# env:
+#   browser: true
+#   commonjs: true
+#   es6: true
+#   node: true
+#   jquery: true
+# settings:
+#   react:
+#     version: 'detect'
+parser: 'babel-eslint'
+extends:
+  - 'eslint:recommended'
+  # - 'plugin:react/recommended' # https://github.com/yannickcr/eslint-plugin-react#configuration
+plugins:
+  - 'babel'
+parserOptions:
+  # ecmaVersion: 2018
+  # ecmaVersion: 7
+  # ecmaVersion: 5
+  sourceType: module
+  # files:
+  #   -
+  #     patterns: '**/*.jsx'
+rules:
+  no-debugger: warn
+  no-console: warn
+  # no-console: 0 # DEBUG?
+  # no-const-assign: error
+  # no-unused-vars: 0 # DEBUG?
+  no-unused-vars:
+    - warn
+    -
+      vars: local
+      varsIgnorePattern: ^_
+  # camelcase:
+  #   - warn
+  # indent:
+  #   - warn
+  #   - 2
+  linebreak-style:
+    - error
+    - unix
+  comma-dangle: # https://eslint.org/docs/rules/comma-dangle
+    - error
+    -
+      functions: never
+      arrays: ignore
+      objects: ignore
+      # objects: only-multiline
+  # quotes:
+  #   - warn
+  #   - single
+  curly: # single line statements without curly braces
+    - warn
+    # - always
+  # curly: 0
+  semi: # end-line semicolons
+    - warn
+    - always
+  # semi: 0
+globals:
+  DEBUG: false
+  # XDEBUG: false
+  JSON: false
+  UTILS: false
+  Bem: false
+  BEMDOM: false
+  BemCompiler: false
+  BEMHTML: false # ???
+  BemEntity: false
+  BemBlock: false
+  BemElem: false
+  BemLazyStub: false
+  App: false # Main application instance
+  config: false # Project configuration
+  # inherit: false # Class inheritance support
+  Promise: false # Promise object
+  Deferred: false # Promise deferred creator
+  vendorSupport: false # Vendor supprt library
+  requestor: false # AJAX wrapper
+  HWLib: true # Hardware vendor libraries
+overrides:
+  -  # JS
+    files: '**/*.js'
+    env:
+      # browser: true
+      # jquery: true
+      commonjs: true
+      es6: true
+      node: true
+  -  # Jest tests
+    files: '**/*.test.js'
+    env:
+      jest: true
+    plugins:
+      - jest
+    rules:
+      semi: 0
+      # 'jest/no-disabled-tests': 'warn'
+      # 'jest/no-focused-tests': 'error'
+      # 'jest/no-identical-title': 'error'
+      # 'jest/prefer-to-have-length': 'warn'
+      # 'jest/valid-expect': 'error'

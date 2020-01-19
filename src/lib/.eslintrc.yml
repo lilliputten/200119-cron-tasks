@@ -1,0 +1,4 @@
+rules:
+  semi: 0 # end-linbe semicolons
+  no-prototype-builtins: 0
+  no-useless-escape: 0

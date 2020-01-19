@@ -1,0 +1,52 @@
+--- php-date-formatter.js.orig	Thu Feb 18 18:15:13 2016
++++ php-date-formatter.js	Mon May 27 10:13:02 2019
+@@ -96,7 +96,7 @@
+         parseDate: function (vDate, vFormat) {
+             var self = this, vFormatParts, vDateParts, i, vDateFlag = false, vTimeFlag = false, vDatePart, iDatePart,
+                 vSettings = self.dateSettings, vMonth, vMeriIndex, vMeriOffset, len, mer,
+-                out = {date: null, year: null, month: null, day: null, hour: 0, min: 0, sec: 0};
++                out = {date: null, year: null, month: null, day: null, hour: 0, min: 0, sec: 0, msec: 0};
+             if (!vDate) {
+                 return null;
+             }
+@@ -210,15 +210,23 @@
+                         }
+                         vTimeFlag = true;
+                         break;
++                    case 'u':
++                        if (iDatePart >= 0 && iDatePart <= 999) {
++                            out.msec = iDatePart;
++                        } else {
++                            return null;
++                        }
++                        vTimeFlag = true;
++                        break;
+                 }
+             }
+             if (vDateFlag === true && out.year && out.month && out.day) {
+-                out.date = new Date(out.year, out.month - 1, out.day, out.hour, out.min, out.sec, 0);
++                out.date = new Date(out.year, out.month - 1, out.day, out.hour, out.min, out.sec, out.msec);
+             } else {
+                 if (vTimeFlag !== true) {
+                     return null;
+                 }
+-                out.date = new Date(0, 0, 0, out.hour, out.min, out.sec, 0);
++                out.date = new Date(0, 0, 0, out.hour, out.min, out.sec, out.msec);
+             }
+             return out.date;
+         },
+@@ -499,7 +507,7 @@
+                  * @return {string}
+                  */
+                 u: function () {
+-                    return _lpad(vDate.getMilliseconds() * 1000, 6);
++                    return _lpad(vDate.getMilliseconds()/*  * 1000 */, 3); // Using js miliseconds (0-999)
+                 },
+ 
+                 //////////////
+@@ -613,3 +621,4 @@
+         }
+     };
+ })();
+\ No newline at end of file
++module.exports = DateFormatter;

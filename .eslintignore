@@ -1,0 +1,5 @@
+**/*.min.js
+**/*.UNUSED.js
+src/core/json2.js
+src/core/jquery*
+src/core/es5*
