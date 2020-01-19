@@ -1,3 +1,4 @@
+node_modules/
 **/*.min.js
 **/*.UNUSED.js
 src/core/json2.js
