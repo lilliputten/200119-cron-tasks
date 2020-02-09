@@ -7,7 +7,7 @@
 export PROJECT_NAME="cron-tasks" # Project (and folder) name
 # export PROJECT_NAME=`basename "${PWD}"` # Example: get project name from current folder
 
-export REMOTE_TARGET_PATH="/home/pi/${PROJECT_NAME}" # Destination folder
+export REMOTE_TARGET_PATH="/home/pi/Work/${PROJECT_NAME}" # Destination folder
 
 export ROOTFILES="
   README.md \
