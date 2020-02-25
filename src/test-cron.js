@@ -1,6 +1,6 @@
 /** @module test-cron.js
  *  @since 2020.01.18, 17:00
- *  @changed 2020.01.18, 17:00
+ *  @changed 2020.02.25, 22:23
  */
 
 const fs = require('fs');
@@ -20,6 +20,7 @@ const dateTag = dateformat(currTime, dateStringFormat);
 const rootDir = path.resolve(__dirname, '..');
 
 const logFileName = path.resolve(rootDir, 'log.txt');
+// const logFileName = '/home/igor/test-log.txt';
 
 console.log('Run at ' + dateTag + ' for log file: ' + logFileName); // eslint-disable-line no-console
 
